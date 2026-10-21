@@ -1,0 +1,141 @@
+/* ==========================================================================
+   THE MIDNIGHT ENTRANCE — EXACT CSS HEART ANIMATION (body1.css)
+   Pulsing Hot-Pink Heart with Midnight Gold & Purple Glow
+   ========================================================================== */
+
+:root {
+  --color-midnight-black: #080611;
+  --color-midnight-purple: #160B2B;
+  --color-royal-purple: #5B21B6;
+  --color-soft-violet: #A78BFA;
+  --color-hot-pink: #FF69B4;
+  --color-champagne-gold: #D4AF37;
+  --color-bright-gold: #FFD700;
+  --color-warm-ivory: #FFF8F0;
+
+  --heart-w: clamp(140px, 32vw, 175px);
+  --heart-h: calc(var(--heart-w) * 1.45);
+  --heart-top: calc((var(--heart-h) - var(--heart-w)) / 2);
+  --heart-left: calc(-1 * var(--heart-top));
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    90deg,
+    rgba(35, 0, 48, 1) 0%,
+    rgba(22, 22, 22, 1) 56%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  color: var(--color-warm-ivory);
+  font-family: 'Cinzel', serif;
+  overflow: hidden;
+}
+
+.wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 0.7s infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heart {
+  height: var(--heart-h);
+  width: var(--heart-w);
+  margin: auto;
+  background-color: hotpink;
+  border-radius: var(--heart-w) var(--heart-w) 0 0;
+  transform: rotate(45deg);
+  position: relative;
+  animation: shadow 0.7s infinite;
+}
+
+.heart::after {
+  position: absolute;
+  top: var(--heart-top);
+  left: var(--heart-left);
+  content: '';
+  height: inherit;
+  width: inherit;
+  background-color: inherit;
+  border-radius: inherit;
+  transform: rotate(-90deg);
+  animation: shadow 0.7s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes shadow {
+  0% {
+    box-shadow: 
+      0 0 0 0 hotpink,
+      0 0 0 0 rgba(212, 175, 55, 0.4),
+      0 0 0 0 rgba(91, 33, 182, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 16px 2px hotpink,
+      0 0 25px 5px rgba(255, 215, 0, 0.5),
+      0 0 35px 8px rgba(91, 33, 182, 0.5);
+  }
+  70% {
+    box-shadow: 
+      0 0 35px 8px hotpink,
+      0 0 45px 12px rgba(255, 215, 0, 0.6),
+      0 0 65px 16px rgba(91, 33, 182, 0.6);
+  }
+  95% {
+    box-shadow: 
+      0 0 90px 4px hotpink,
+      0 0 70px 18px rgba(255, 215, 0, 0.75),
+      0 0 95px 24px rgba(91, 33, 182, 0.7);
+  }
+  100% {
+    box-shadow: 
+      0 0 0 0 hotpink,
+      0 0 0 0 rgba(212, 175, 55, 0.4),
+      0 0 0 0 rgba(91, 33, 182, 0.3);
+  }
+}
+
+/* Centered Text Overlay DIRECTLY Inside the Heart */
+.heart-text-overlay {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 30;
+  width: clamp(230px, 75%, 310px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+}
